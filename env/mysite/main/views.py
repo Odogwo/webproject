@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Product #import Product from models
 from django.core.paginator import Paginator #import Paginator
+from .forms import NewUserForm #import NewUserForm from forms.py
 
 # Create your views here.
 def homepage(request):
@@ -14,3 +15,9 @@ def products(request):
 	page_number = request.GET.get('page')
 	page_obj = paginator.get_page(page_number)
 	return render(request = request, template_name="main/products.html", context = {"page_obj":page_obj})
+
+
+
+def register(request):         
+	form = NewUserForm
+	return render (request=request, template_name="main/register.html", context={"form":form})
