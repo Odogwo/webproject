@@ -6,4 +6,6 @@ app_name = "main"
 
 urlpatterns = [
     path("", views.homepage, name="homepage"),
-]
+    path("products", views.products, name="products"),
+
+    ]

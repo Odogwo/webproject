@@ -1,0 +1,27 @@
+
+
+{% extends "main/header.html" %}
+
+    {% block content %}
+    <!--Products-->
+    <div class="container py-5">
+        <h1 class="font-weight-bold">Products</h1>
+        <hr>
+        <br>
+        <div class="row">
+            {% for p in products %}          
+                <div class="col-sm-12 col-md-6 col-lg-4 pb-4">
+                    <div class="card h-100" style="border:none">
+                        <img src="{{ p.product_image.url }}" class="card-img-top" alt="{{ p.product_name }}" style="width: auto; height: 200px; object-fit: scale-down;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ p.product_name }}</h5>
+                            <p class="card-text text-muted" style="font-size:12px">{{ p.product_type }}</p>
+                            <p class="card-text">{{ p.product_description }}</p>
+                            <a href="{{ p.affiliate_url }}" class="btn btn-warning">Buy now</a>
+                        </div> 
+                    </div> 
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}

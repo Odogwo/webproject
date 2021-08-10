@@ -4,28 +4,6 @@
   {% block content %}
   {% load static %}
 
-  <body>
-      <!--Navbar-->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <a class="navbar-brand" href="/">Encore</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
 
         <!--CTA-->
     <div class="container">
@@ -33,7 +11,7 @@
         <div class="col-sm-12 col-md-12 col-lg-6 pb-4">
           <h1 class="display-4 font-weight-bold">Elevate your listening</h1>
           <h5>Everyday headphones that make your favorite artists sound like their performing a never-ending encore.</h5>
-          <a class="btn btn-primary mt-2" href="/products">FIND YOUR SET</a>
+          <a class="btn btn-primary mt-2" href="products.html">FIND YOUR SET</a>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6">
           <img class="img-fluid rounded" src="{% static 'img/cta-headphones.jpg' %}" alt="Headphones">
@@ -62,6 +40,10 @@
           </div>
           {% endfor %}
         </div>
+        <div class="container text-right">
+          <a href="/products">View more</a>
+        </div>
+        
       </div>
 
 
