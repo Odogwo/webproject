@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+
+{% load humanize %} <!-- Add this-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,7 +23,7 @@
           {% for celebrity in data %}
             <tr>
               <td>{{ celebrity.name }}</td>
-              <td>{{ celebrity.worth }}</td>
+              <td>$ {{ celebrity.worth | intcomma }}</td> <!--Modify this line-->
             </tr>
           {% endfor %}
         </tbody>
