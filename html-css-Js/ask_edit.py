@@ -32,11 +32,10 @@ def main():
         data_dict = toml.load(file)
 
     # Print sections
-    for section_name, section in data_dict.items():
+    for section in data_dict.values():
         if not wait_for_enter_or_escape():
             sys.exit()
         print_section(section)
 
 if __name__ == "__main__":
     main()
-
