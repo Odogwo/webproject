@@ -7,7 +7,7 @@ def print_section(section):
 
 def main():
     # Load the TOML data
-    with open('your_file_path_here.toml', 'r') as file:
+    with open('introduction.toml', 'r') as file:
         data = toml.load(file)
 
     # Print sections
