@@ -1,4 +1,5 @@
 "# webproject" 
 
-for the require,nmts 
+for the requirements 
+
 pip freeze > requirements.txt
