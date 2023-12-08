@@ -1,4 +1,5 @@
-[[html]]
+[[sections]]
+name = "html"
 description = "HTML is the standard markup language for Web pages."
 features = [
   "Create your own Website",
@@ -7,7 +8,8 @@ features = [
   "Elements label content like headings, paragraphs, links, etc."
 ]
 
-[[css]]
+[[sections]]
+name = "css"
 description = "CSS is the language used to style a Web page."
 features = [
   "Describes how HTML elements should be displayed",
@@ -17,7 +19,8 @@ features = [
   "Defines styles for web pages, including design, layout, and responsiveness"
 ]
 
-[[javascript]]
+[[sections]]
+name = "javascript"
 description = "JavaScript is the programming language of the Web."
 features = [
   "Part of the trio of languages web developers must learn",
