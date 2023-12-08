@@ -32,7 +32,8 @@ def main():
         data_dict = toml.load(file)
 
     # Print sections
-    for section in data_dict.values():
+    for section_key in data_dict:
+        section = data_dict[section_key]
         if not wait_for_enter_or_escape():
             sys.exit()
         print_section(section)
