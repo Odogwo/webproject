@@ -13,6 +13,7 @@ def main():
     # Print sections
     for section in data['sections']:
         input("Press Enter to load the next section...")
+        print()
         print_section(section)
 
     # Print relationships
@@ -24,6 +25,7 @@ def main():
             section = next((s for s in data['sections'] if s['name'] == section_name), None)
             if section:
                 input("Press Enter to load the next section...")
+                print()
                 print_section(section)
         print("\n" + "=" * 40 + "\n")
 
