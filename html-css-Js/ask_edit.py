@@ -6,6 +6,7 @@ try:
 
     def wait_for_enter_or_escape():
         print("Press Enter to load the next section. Press ESC to terminate.")
+        print()
         while True:
             key = msvcrt.getch()
             if key == b'\r':  # Enter key
@@ -17,6 +18,7 @@ except ImportError:
     # For non-Windows systems, use a simple input prompt
     def wait_for_enter_or_escape():
         print("Press Enter to load the next section. Press Enter again to terminate.")
+        print()
         input()
         return True
 
