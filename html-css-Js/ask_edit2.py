@@ -1,15 +1,29 @@
 import toml
 import sys
 
+try:
+    import msvcrt
+
+    def wait_for_enter_or_escape():
+        print("Press Enter to load the next section. Press ESC to terminate.")
+        while True:
+            key = msvcrt.getch()
+            if key == b'\r':  # Enter key
+                return True
+            elif key == b'\x1b':  # ESC key
+                return False
+
+except ImportError:
+    # For non-Windows systems, use a simple input prompt
+    def wait_for_enter_or_escape():
+        print("Press Enter to load the next section. Press Enter again to terminate.")
+        input()
+        return True
+
 def print_section(section):
     print(f"Section: {section['name']}\n")
     print(section['content'])
     print("\n" + "-" * 40 + "\n")
-
-def wait_for_enter_or_escape():
-    print("Press Enter to load the next section. Press ESC to terminate.")
-    user_input = input()
-    return user_input.lower() != 'esc'
 
 def main():
     # Load the TOML data
@@ -38,4 +52,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
