@@ -7,22 +7,26 @@ def print_section(section):
 
 def main():
     # Load the TOML data
-    with open('introduction.toml', 'r') as file:
+    with open('your_file_path_here.toml', 'r') as file:
         data = toml.load(file)
 
     # Print sections
     for section in data['sections']:
+        input("Press Enter to load the next section...")
         print_section(section)
 
     # Print relationships
     for relationship in data['relationships']:
+        input("Press Enter to load the next relationship...")
         print(f"Relationship: {relationship['name']}\n")
         print(relationship['description'])
         for section_name in relationship['sections']:
             section = next((s for s in data['sections'] if s['name'] == section_name), None)
             if section:
+                input("Press Enter to load the next section...")
                 print_section(section)
         print("\n" + "=" * 40 + "\n")
 
 if __name__ == "__main__":
     main()
+
