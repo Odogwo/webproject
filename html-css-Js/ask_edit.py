@@ -27,8 +27,9 @@ def print_section(section):
     print("\n" + "-" * 40 + "\n")
 
 def main():
-    # Load the TOML data from a separate file
-    with open('introduction.toml', 'r') as file:
+    # Load the TOML data from an external file
+    file_path = 'your_external_file.toml'  # Replace with the path to your TOML file
+    with open(file_path, 'r') as file:
         data_dict = toml.load(file)
 
     # Print sections
