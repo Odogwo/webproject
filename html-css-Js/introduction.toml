@@ -1,28 +1,12 @@
-[[html]]
-description = "HTML is the standard markup language for Web pages."
-features = [
-  "Create your own Website",
-  "Describes the structure of a Web page",
-  "Consists of a series of elements",
-  "Elements label content like headings, paragraphs, links, etc."
-]
 
-[[css]]
-description = "CSS is the language used to style a Web page."
-features = [
-  "Describes how HTML elements should be displayed",
-  "Stands for Cascading Style Sheets",
-  "Saves work by controlling layout across multiple web pages",
-  "External stylesheets are stored in CSS files",
-  "Defines styles for web pages, including design, layout, and responsiveness"
-]
+[[questions]]
+question = "What is HTML and its role in web development?"
+answer = "HTML is the standard markup language for Web pages. It allows you to create your own Website, describe the structure of a Web page, and consists of a series of elements. These elements label content such as headings, paragraphs, links, etc."
 
-[[javascript]]
-description = "JavaScript is the programming language of the Web."
-features = [
-  "Part of the trio of languages web developers must learn",
-  "Can change HTML content using methods like getElementById()",
-  "Can change HTML attribute values",
-  "Can change HTML styles (CSS)",
-  "Can hide and show HTML elements"
-]
+[[questions]]
+question = "Explain the significance of CSS in web design."
+answer = "CSS is the language used to style a Web page. It describes how HTML elements should be displayed, stands for Cascading Style Sheets, and saves work by controlling layout across multiple web pages. External stylesheets are stored in CSS files, and CSS defines styles for web pages, including design, layout, and responsiveness."
+
+[[questions]]
+question = "What is JavaScript, and why is it important in web development?"
+answer = "JavaScript is the programming language of the Web and is one of the three languages all web developers must learn. It has the capability to change HTML content using methods like getElementById(). Additionally, it can alter HTML attribute values, modify HTML styles (CSS), and hide or show HTML elements."
