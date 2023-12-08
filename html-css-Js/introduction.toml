@@ -1,4 +1,5 @@
-[intro]
+[[sections]]
+name = "html_intro"
 content = """
 HTML is the standard markup language for Web pages.
 
@@ -9,7 +10,11 @@ HTML describes the structure of a Web page
 HTML consists of a series of elements
 HTML elements tell the browser how to display the content
 HTML elements label pieces of content such as "this is a heading", "this is a paragraph", "this is a link", etc.
+"""
 
+[[sections]]
+name = "css_intro"
+content = """
 CSS is the language we use to style a Web page.
 CSS is the language we use to style an HTML document.
 
@@ -21,7 +26,11 @@ External stylesheets are stored in CSS files
 CSS is used to define styles for your web pages, including the design,
 layout and variations in display for different devices and screen sizes.
 CSS removed the style formatting from the HTML page!
+"""
 
+[[sections]]
+name = "javascript_intro"
+content = """
 JavaScript is the programming language of the Web.
 JavaScript is one of the 3 languages all web developers must learn:
 
@@ -44,3 +53,14 @@ Hiding HTML elements can be done by changing the display style:
 JavaScript Can Show HTML Elements
 Showing hidden HTML elements can also be done by changing the display style:
 """
+
+[[relationships]]
+name = "html_css_relationship"
+sections = ["html_intro", "css_intro"]
+description = "Describes the transition from HTML to CSS, focusing on styling web pages."
+
+[[relationships]]
+name = "css_js_relationship"
+sections = ["css_intro", "javascript_intro"]
+description = "Explains the connection between CSS and JavaScript, emphasizing the dynamic behavior of web pages."
+
