@@ -1,12 +1,40 @@
 
 [[questions]]
-question = "What is HTML and its role in web development?"
-answer = "HTML is the standard markup language for Web pages. It allows you to create your own Website, describe the structure of a Web page, and consists of a series of elements. These elements label content such as headings, paragraphs, links, etc."
+category = "HTML"
+questions = [
+  "What is HTML, and why is it considered the standard markup language for Web pages?",
+  "How does HTML enable the creation of a website?",
+  "Define the acronym HTML and its significance in web development.",
+  "In what way does HTML describe the structure of a web page?",
+  "What role do HTML elements play in instructing the browser on content display?"
+]
 
 [[questions]]
-question = "Explain the significance of CSS in web design."
-answer = "CSS is the language used to style a Web page. It describes how HTML elements should be displayed, stands for Cascading Style Sheets, and saves work by controlling layout across multiple web pages. External stylesheets are stored in CSS files, and CSS defines styles for web pages, including design, layout, and responsiveness."
+category = "CSS"
+questions = [
+  "Explain the purpose of CSS in web design.",
+  "Define CSS and its role in styling both a web page and an HTML document.",
+  "How does CSS dictate the display of HTML elements on various media?",
+  "What are the advantages of using external stylesheets in CSS?",
+  "In what aspects does CSS contribute to controlling the layout of multiple web pages simultaneously?"
+]
 
 [[questions]]
-question = "What is JavaScript, and why is it important in web development?"
-answer = "JavaScript is the programming language of the Web and is one of the three languages all web developers must learn. It has the capability to change HTML content using methods like getElementById(). Additionally, it can alter HTML attribute values, modify HTML styles (CSS), and hide or show HTML elements."
+category = "JavaScript"
+questions = [
+  "Why is JavaScript referred to as the programming language of the Web?",
+  "List the three essential languages that web developers must learn, including JavaScript.",
+  "How does JavaScript interact with HTML to change content dynamically?",
+  "Provide an example of a JavaScript method used to change HTML attribute values.",
+  "Explain how JavaScript can alter the styles of HTML elements, incorporating CSS modifications."
+]
+
+[[questions]]
+category = "General"
+questions = [
+  "How has CSS influenced the separation of style formatting from HTML pages?",
+  "What role does JavaScript play in programming the behavior of web pages?",
+  "Elaborate on the significance of the getElementById() method in JavaScript.",
+  "How can JavaScript be employed to hide HTML elements on a webpage?",
+  "Describe the process of revealing hidden HTML elements using JavaScript."
+]
