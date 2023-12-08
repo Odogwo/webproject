@@ -28,16 +28,16 @@ def print_section(section):
 
 def main():
     # Load the TOML data from an external file
-    file_path = 'introduction.toml'  # Replace with the path to your TOML file
+    file_path = 'your_external_file.toml'  # Replace with the path to your TOML file
     with open(file_path, 'r') as file:
         data_dict = toml.load(file)
 
     # Print sections
-    for section_key in data_dict:
-        section = data_dict[section_key]
+    for section in data_dict['sections']:
         if not wait_for_enter_or_escape():
             sys.exit()
         print_section(section)
 
 if __name__ == "__main__":
     main()
+
