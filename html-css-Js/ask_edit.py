@@ -21,34 +21,21 @@ except ImportError:
         return True
 
 def print_section(section):
-    print(f"Section: {section['name']}\n")
-    print(section['content'])
+    print(f"Section: {section['description']}\n")
+    for feature in section['features']:
+        print(f"  - {feature}")
     print("\n" + "-" * 40 + "\n")
 
 def main():
-    # Load the TOML data
+    # Load the TOML data from a separate file
     with open('introduction.toml', 'r') as file:
-        data = toml.load(file)
+        data_dict = toml.load(file)
 
     # Print sections
-    for section in data['sections']:
+    for section in data_dict.values():
         if not wait_for_enter_or_escape():
             sys.exit()
         print_section(section)
-
-    # Print relationships
-    for relationship in data['relationships']:
-        if not wait_for_enter_or_escape():
-            sys.exit()
-        print(f"Relationship: {relationship['name']}\n")
-        print(relationship['description'])
-        for section_name in relationship['sections']:
-            section = next((s for s in data['sections'] if s['name'] == section_name), None)
-            if section:
-                if not wait_for_enter_or_escape():
-                    sys.exit()
-                print_section(section)
-        print("\n" + "=" * 40 + "\n")
 
 if __name__ == "__main__":
     main()
