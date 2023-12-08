@@ -1,27 +1,28 @@
 import toml
 
-def ask_question(section):
+def print_section(section):
+    print(f"Section: {section['name']}\n")
     print(section['content'])
-    input("Press Enter to continue...")
+    print("\n" + "-" * 40 + "\n")
 
 def main():
     # Load the TOML data
     with open('introduction.toml', 'r') as file:
         data = toml.load(file)
 
-    # Iterate through sections and ask questions
-    for section_name in data['sections']:
-        section = next((s for s in data['sections'] if s['name'] == section_name), None)
-        if section:
-            ask_question(section)
+    # Print sections
+    for section in data['sections']:
+        print_section(section)
 
-    # Ask questions related to relationships
+    # Print relationships
     for relationship in data['relationships']:
+        print(f"Relationship: {relationship['name']}\n")
         print(relationship['description'])
         for section_name in relationship['sections']:
             section = next((s for s in data['sections'] if s['name'] == section_name), None)
             if section:
-                ask_question(section)
+                print_section(section)
+        print("\n" + "=" * 40 + "\n")
 
 if __name__ == "__main__":
     main()
