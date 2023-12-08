@@ -28,7 +28,7 @@ def print_section(section):
 
 def main():
     # Load the TOML data from an external file
-    file_path = 'your_external_file.toml'  # Replace with the path to your TOML file
+    file_path = 'introduction.toml'  # Replace with the path to your TOML file
     with open(file_path, 'r') as file:
         data_dict = toml.load(file)
 
