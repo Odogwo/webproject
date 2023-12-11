@@ -1,0 +1,110 @@
+
+[[introduction]]
+content = """
+
+models – essentially, your database layout, with additional metadata.
+A model is the single, definitive source of information about your data. 
+It contains the essential fields and behaviors of the data you’re storing. Django follows the DRY Principle.
+The goal is to define your data model in one place and automatically derive things from it.
+
+This includes the migrations - unlike in Ruby On Rails, for example, migrations are entirely derived from your models file,
+and are essentially a history that Django can roll through to update your database schema to match your current models.
+
+"""
+
+
+[[code2]]
+
+content =  """
+
+from django.db import models
+
+
+class Question(models.Model):
+    question_text = models.CharField(max_length=200)
+    pub_date = models.DateTimeField("date published")
+
+
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+
+""""
+
+[[code2]]
+
+content = """
+
+In our poll app, we’ll create two models: Question and Choice. 
+A Question has a question and a publication date. 
+A Choice has two fields: the text of the choice and a vote tally. Each Choice is associated with a Question.
+
+These concepts are represented by Python classes. Edit the polls/models.py file so it looks like this:
+"""
+
+[[Model2]]
+name = "Question"
+description = "Represents a question in the database."
+fields = [
+    { name = "question_text", type = "CharField", description = "The text of the question.", arguments = ["max_length=200"] },
+    { name = "pub_date", type = "DateTimeField", description = "The publication date of the question." },
+]
+
+[[Model2]]
+name = "Choice"
+description = "Represents a choice related to a question in the database."
+fields = [
+    { name = "question", type = "ForeignKey", description = "The question to which this choice is related." },
+    { name = "choice_text", type = "CharField", description = "The text of the choice.", arguments = ["max_length=200"] },
+    { name = "votes", type = "IntegerField", description = "The number of votes for this choice.", arguments = ["default=0"] },
+]
+
+
+[[activate]]
+content =  """
+
+Activating models¶
+That small bit of model code gives Django a lot of information. With it, Django is able to:
+
+Create a database schema (CREATE TABLE statements) for this app.
+Create a Python database-access API for accessing Question and Choice objects.
+But first we need to tell our project that the polls app is installed.
+Django apps are “pluggable”: You can use an app in multiple projects, and you can distribute apps, because they don’t have to be tied to a given Django installation.
+
+To include the app in our project, we need to add a reference to its configuration class
+in the INSTALLED_APPS setting. The PollsConfig class is in the polls/apps.py file, 
+so its dotted path is 'polls.apps.PollsConfig'. Edit the mysite/settings.py file and add that dotted path to the INSTALLED_APPS setting. It’ll look like this:
+
+mysite/settings.py¶
+INSTALLED_APPS = [
+    "polls.apps.PollsConfig",
+
+Now Django knows to include the polls app. Let’s run another command:
+
+
+$ python manage.py makemigrations polls
+
+By running makemigrations, you’re telling Django that you’ve made some changes to your models (in this case, you’ve made new ones) and that you’d like the changes to be stored as a migration.
+
+Migrations are how Django stores changes to your models (and thus your database schema) - 
+they’re files on disk. You can read the migration for your new model if you like; it’s the
+file polls/migrations/0001_initial.py. Don’t worry, you’re not expected to read them every time
+Django makes one, but they’re designed to be human-editable in case you want to manually tweak how Django changes things.
+"""
+[[sqlmigrate]]
+
+content  = """
+See what SQL that migration would run. The sqlmigrate command takes migration names and returns their SQL:
+
+$ python manage.py sqlmigrate polls 0001
+"""
+
+[[migrations]]
+content = """
+three-step guide to making model changes:
+
+Change your models (in models.py).
+Run python manage.py makemigrations to create migrations for those changes
+Run python manage.py migrate to apply those changes to the database.
+"""
