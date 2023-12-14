@@ -1,8 +1,6 @@
 [[link]]
 1 = """
 
-CUURENT = https://svg-tutorial.com/svg/polygon
-
 https://svg-tutorial.com/svg/basic-shapes
 https://app.daily.dev/posts/6ZkOcWJMr?utm_source=notification&utm_medium=email&utm_campaign=digest
 """
@@ -23,16 +21,25 @@ This opens up a lot of cool options. We can access parts of an image with JavaSc
 In this tutorial series, we learn the foundations of the SVG syntax step by step from basic to more advanced topics.
 
 Sizing an SVG
-Before we start drawing, we have to talk about the svg element itself. The SVG element contains the image elements and defines the frame of our image. It sets the inner size and the outer size of the image.
+Before we start drawing, we have to talk about the svg element itself. 
+The SVG element contains the image elements and defines the frame of our image. 
+It sets the inner size and the outer size of the image.
 
-The width and height properties define how much space the image takes up in the browser. There’s also a viewBox property that defines a coordinate system for the image elements. The first two values in viewBox define the top-left coordinate in the image and the last two define the size from the perspective of the image elements.
+The width and height properties define how much space the image takes up in the browser. 
+There’s also a viewBox property that defines a coordinate system for the image elements. 
+The first two values in viewBox define the top-left coordinate in the image and the last
+two define the size from the perspective of the image elements.
 
 The size defined by width and height is how the rest of the HTML thinks of the image and how big it appears in the browser.
 The size defined by viewBox is how the image elements think of the image when they position themself.
-In these next three examples, we have three SVGs that have the very same content. A circle element with the same center coordinate and same radius. They appear quite different though. In case the size defined by viewBox does not match the width and the height properties, then the image scales up or scales down.
-
+In these next three examples, we have three SVGs that have the very same content. 
+A circle element with the same center coordinate and same radius. 
+They appear quite different though. 
+In case the size defined by viewBox does not match the width and the height properties, 
+then the image scales up or scales down.
 
 Explain
+
 <svg 
   width="100" 
   height="100" 
@@ -74,15 +81,11 @@ Explain
 SVGs often have an xmlns property as well. This, however – if the image is inlined in HTML – can be omitted.
 
 How to draw a Christmas Ornament
-Let’s start with a simple Christmas ornament. 
-Here we only use simple shapes, a rectangle, and two circles. 
-Note, that the origin of the coordinate system is in the center of the image.
+Let’s start with a simple Christmas ornament. Here we only use simple shapes, a rectangle, and two circles. Note, that the origin of the coordinate system is in the center of the image.
 
-First, we define the main part of the Christmas ornament, 
-by drawing a circle. To draw a circle we set their center position (cx and cy) and the radius with the r property.
+First, we define the main part of the Christmas ornament, by drawing a circle. To draw a circle we set their center position (cx and cy) and the radius with the r property.
 
-We also have presentational attributes that style our shapes. 
-Similar to the background-color property in CSS, we set the color for the shape with the fill attribute.
+We also have presentational attributes that style our shapes. Similar to the background-color property in CSS, we set the color for the shape with the fill attribute.
 
 
 Explain
@@ -98,9 +101,7 @@ Explain
     fill="#D1495B" 
   />
 </svg>
-Then we draw a rectangle as a little cap on top of the Christmas ornament with the rect element. 
-In this case, we have to set the top-left position of the rectangle and its size.
-We use the fill attribute the same way as we did with the circle.
+Then we draw a rectangle as a little cap on top of the Christmas ornament with the rect element. In this case, we have to set the top-left position of the rectangle and its size. We use the fill attribute the same way as we did with the circle.
 
 
 Explain
@@ -123,9 +124,7 @@ Explain
     fill="#F79257" 
   />
 </svg>
-Finally, we add another circle as a hanger on top of these.
-Note that we use the same circle element, but with different attributes. 
-We set the fill property to “none” and set a border for the shape with the stroke and stroke-width properties.
+Finally, we add another circle as a hanger on top of these. Note that we use the same circle element, but with different attributes. We set the fill property to “none” and set a border for the shape with the stroke and stroke-width properties.
 
 The final code of the image on the left is as follows:
 
