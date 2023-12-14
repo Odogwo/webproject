@@ -72,11 +72,15 @@ Explain
 SVGs often have an xmlns property as well. This, however – if the image is inlined in HTML – can be omitted.
 
 How to draw a Christmas Ornament
-Let’s start with a simple Christmas ornament. Here we only use simple shapes, a rectangle, and two circles. Note, that the origin of the coordinate system is in the center of the image.
+Let’s start with a simple Christmas ornament. 
+Here we only use simple shapes, a rectangle, and two circles. 
+Note, that the origin of the coordinate system is in the center of the image.
 
-First, we define the main part of the Christmas ornament, by drawing a circle. To draw a circle we set their center position (cx and cy) and the radius with the r property.
+First, we define the main part of the Christmas ornament, 
+by drawing a circle. To draw a circle we set their center position (cx and cy) and the radius with the r property.
 
-We also have presentational attributes that style our shapes. Similar to the background-color property in CSS, we set the color for the shape with the fill attribute.
+We also have presentational attributes that style our shapes. 
+Similar to the background-color property in CSS, we set the color for the shape with the fill attribute.
 
 
 Explain
@@ -92,7 +96,9 @@ Explain
     fill="#D1495B" 
   />
 </svg>
-Then we draw a rectangle as a little cap on top of the Christmas ornament with the rect element. In this case, we have to set the top-left position of the rectangle and its size. We use the fill attribute the same way as we did with the circle.
+Then we draw a rectangle as a little cap on top of the Christmas ornament with the rect element. 
+In this case, we have to set the top-left position of the rectangle and its size.
+We use the fill attribute the same way as we did with the circle.
 
 
 Explain
@@ -115,7 +121,9 @@ Explain
     fill="#F79257" 
   />
 </svg>
-Finally, we add another circle as a hanger on top of these. Note that we use the same circle element, but with different attributes. We set the fill property to “none” and set a border for the shape with the stroke and stroke-width properties.
+Finally, we add another circle as a hanger on top of these.
+Note that we use the same circle element, but with different attributes. 
+We set the fill property to “none” and set a border for the shape with the stroke and stroke-width properties.
 
 The final code of the image on the left is as follows:
 
