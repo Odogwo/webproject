@@ -477,8 +477,7 @@ Template filters allow you to modify variables for display and look like {{ vari
 ```
 python manage.py runserver
 ```
-
-> post/detail.html
+### post/detail.html
 ```
 {% extends "blog/base.html" %}
 {% block title %}{{ post.title }}{% endblock %}
