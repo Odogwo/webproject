@@ -1,0 +1,23 @@
+## Additional resources
+```
+The following resources provide additional information related to the topics covered in this chapter:
+
+Source code for this chapter – https://github.com/PacktPublishing/Django-4-by-example/tree/main/Chapter01
+Python venv library for virtual environments – https://docs.python.org/3/library/venv.html
+Django installation options – https://docs.djangoproject.com/en/4.1/topics/install/
+Django 4.0 release notes – https://docs.djangoproject.com/en/dev/releases/4.0/
+Django 4.1 release notes – https://docs.djangoproject.com/en/4.1/releases/4.1/
+Django’s design philosophies – https://docs.djangoproject.com/en/dev/misc/design-philosophies/
+Django model field reference – https://docs.djangoproject.com/en/4.1/ref/models/fields/
+Model index reference – https://docs.djangoproject.com/en/4.1/ref/models/indexes/
+Python support for enumerations – https://docs.python.org/3/library/enum.html
+Django model enumeration types – https://docs.djangoproject.com/en/4.1/ref/models/fields/#enumeration-types
+Django settings reference – https://docs.djangoproject.com/en/4.1/ref/settings/
+Django administration site – https://docs.djangoproject.com/en/4.1/ref/contrib/admin/
+Making queries with the Django ORM – https://docs.djangoproject.com/en/4.1/topics/db/queries/
+Django URL dispatcher – https://docs.djangoproject.com/en/4.1/topics/http/urls/
+Django URL resolver utilities – https://docs.djangoproject.com/en/4.1/ref/urlresolvers/
+Django template language ­– https://docs.djangoproject.com/en/4.1/ref/templates/language/
+Built-in template tags and filters – https://docs.djangoproject.com/en/4.1/ref/templates/builtins/
+Static files for the code in this chapter – https://github.com/PacktPublishing/Django-4-by-Example/tree/master/Chapter01/mysite/blog/static
+```
