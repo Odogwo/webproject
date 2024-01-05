@@ -65,13 +65,28 @@ https://learning.oreilly.com/library/view/django-4-by/9781801813051/Text/Chapter
 https://docs.djangoproject.com/en/4.1/topics/email/.
 ```
 
-###
+### models  and forms 
 ```
+https://docs.djangoproject.com/en/4.1/topics/db/examples/many_to_one/.
+
+https://docs.djangoproject.com/en/4.1/topics/forms/modelforms/.
 ```
 
 ###
 ```
+Additional resources
+The following resources provide additional information related to the topics covered in this chapter:
 
+Source code for this chapter – https://github.com/PacktPublishing/Django-4-by-example/tree/main/Chapter02
+URLs utility functions – https://docs.djangoproject.com/en/4.1/ref/urlresolvers/
+URL path converters – https://docs.djangoproject.com/en/4.1/topics/http/urls/#path-converters
+Django paginator class – https://docs.djangoproject.com/en/4.1/ref/paginator/
+Introduction to class-based views – https://docs.djangoproject.com/en/4.1/topics/class-based-views/intro/
+Sending emails with Django – https://docs.djangoproject.com/en/4.1/topics/email/
+Django form field types – https://docs.djangoproject.com/en/4.1/ref/forms/fields/
+Working with forms – https://docs.djangoproject.com/en/4.1/topics/forms/
+Creating forms from models – https://docs.djangoproject.com/en/4.1/topics/forms/modelforms/
+Many-to-one model relationships – https://docs.djangoproject.com/en/4.1/topics/db/examples/many_to_one/
 ```
 
 ###
