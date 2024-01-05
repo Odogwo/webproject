@@ -976,73 +976,319 @@ urlpatterns = [
 ```
 python manage.py runserver
 ```
+### models.py
+> Creating a comment system
+> Creating a model for comments
+```
+class Comment(models.Model):
+    post = models.ForeignKey(Post,
+                             on_delete=models.CASCADE,
+                             related_name='comments')
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
+    class Meta:
+        ordering = ['created']
+        indexes = [
+            models.Index(fields=['created']),
+        ]
+    def __str__(self):
+        return f'Comment by {self.name} on {self.post}'
 
+
+```
+### models.py
 >
 ```
+python manage.py makemigrations blog
 
-```
->
-```
-
-```
->
-```
-
-```
-
->
-```
-
-```
-
->
-```
-
-```
-
->
-```
-
-```
-
->
-```
-
-```
-
->
-```
-
+python manage.py migrate
 ```
 
 >
 ```
-
+from .models import Post, Comment
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'post', 'created', 'active']
+    list_filter = ['active', 'created', 'updated']
+    search_fields = ['name', 'email', 'body'
 ```
 
+>
+```
+python manage.py runserver
+
+Open http://127.0.0.1:8000/admin/
+```
+### blog/forms.py
+> Creating forms from models
+```
+from .models import Comment
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['name', 'email', 'body']
+```
+### blog /views.py 
+>
+```
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Post, Comment
+from django.core.paginator import Paginator, EmptyPage,\
+                                  PageNotAnInteger
+from django.views.generic import ListView
+from .forms import EmailPostForm, CommentForm
+from django.core.mail import send_mail
+from django.views.decorators.http import require_POST
+# ...
+@require_POST
+def post_comment(request, post_id):
+    post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
+    comment = None
+    # A comment was posted
+    form = CommentForm(data=request.POST)
+    if form.is_valid():
+        # Create a Comment object without saving it to the database
+        comment = form.save(commit=False)
+        # Assign the post to the comment
+        comment.post = post
+        # Save the comment to the database
+        comment.save()
+    return render(request, 'blog/post/comment.html',
+                           {'post': post,
+                            'form': form,
+                            'comment': comment})
+
+```
+### blog/urls.py
+>
+```
+from django.urls import path
+from . import views
+app_name = 'blog'
+urlpatterns = [
+    # Post views
+    # path('', views.post_list, name='post_list'),
+    path('', views.PostListView.as_view(), name='post_list'),
+    path('<int:year>/<int:month>/<int:day>/<slug:post>/',
+         views.post_detail,
+         name='post_detail'),
+    path('<int:post_id>/share/',
+         views.post_share, name='post_share'),
+    path('<int:post_id>/comment/',
+         views.post_comment, name='post_comment'),
+]
+```
+### template 
+>
+```
+templates/
+  blog/
+    post/
+      includes/
+        comment_form.html
+      detail.html
+      list.html
+      share.html
+```
+### blog/post/includes/comment_form.html
+>
+```
+<h2>Add a new comment</h2>
+<form action="{% url "blog:post_comment" post.id %}" method="post">
+  {{ form.as_p }}
+  {% csrf_token %}
+  <p><input type="submit" value="Add comment"></p>
+</form>
+```
+
+### templates/blog/post/comment.html
+>
+```
+templates/
+  blog/
+    post/
+      includes/
+        comment_form.html
+      comment.html
+      detail.html
+      list.html
+      share.html
+```
+
+### blog/post/comment.html
+>
+```
+{% extends "blog/base.html" %}
+{% block title %}Add a comment{% endblock %}
+{% block content %}
+  {% if comment %}
+    <h2>Your comment has been added.</h2>
+    <p><a href="{{ post.get_absolute_url }}">Back to the post</a></p>
+  {% else %}
+    {% include "blog/post/includes/comment_form.html" %}
+  {% endif %}
+{% endblock %}
+```
+
+### views.py
+>
+```
+def post_detail(request, year, month, day, post):
+    post = get_object_or_404(Post,
+                             status=Post.Status.PUBLISHED,
+                             slug=post,
+                             publish__year=year,
+                             publish__month=month,
+                             publish__day=day)
+    # List of active comments for this post
+    comments = post.comments.filter(active=True)
+    # Form for users to comment
+    form = CommentForm()
+    return render(request,
+                  'blog/post/detail.html',
+                  {'post': post,
+                   'comments': comments,
+                   'form': form})
+```
+### blog/post/detail.html
+>
+```
+{% extends "blog/base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+  <h1>{{ post.title }}</h1>
+  <p class="date">
+    Published {{ post.publish }} by {{ post.author }}
+  </p>
+  {{ post.body|linebreaks }}
+  <p>
+    <a href="{% url "blog:post_share" post.id %}">
+      Share this post
+    </a>
+  </p>
+  {% with comments.count as total_comments %}
+    <h2>
+      {{ total_comments }} comment{{ total_comments|pluralize }}
+    </h2>
+  {% endwith %}
+{% endblock %}
+```
+### blog/post/detail.html
+>
+```
+{% extends "blog/base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+  <h1>{{ post.title }}</h1>
+  <p class="date">
+    Published {{ post.publish }} by {{ post.author }}
+  </p>
+  {{ post.body|linebreaks }}
+  <p>
+    <a href="{% url "blog:post_share" post.id %}">
+      Share this post
+    </a>
+  </p>
+  {% with comments.count as total_comments %}
+    <h2>
+      {{ total_comments }} comment{{ total_comments|pluralize }}
+    </h2>
+  {% endwith %}
+  {% for comment in comments %}
+    <div class="comment">
+      <p class="info">
+        Comment {{ forloop.counter }} by {{ comment.name }}
+        {{ comment.created }}
+      </p>
+      {{ comment.body|linebreaks }}
+    </div>
+  {% empty %}
+    <p>There are no comments.</p>
+  {% endfor %}
+{% endblock %}
+```
+
+### blog/post/detail.html 
+>
+```
+{% extends "blog/base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+  <h1>{{ post.title }}</h1>
+  <p class="date">
+    Published {{ post.publish }} by {{ post.author }}
+  </p>
+  {{ post.body|linebreaks }}
+  <p>
+    <a href="{% url "blog:post_share" post.id %}">
+      Share this post
+    </a>
+  </p>
+  {% with comments.count as total_comments %}
+    <h2>
+      {{ total_comments }} comment{{ total_comments|pluralize }}
+    </h2>
+  {% endwith %}
+  {% for comment in comments %}
+    <div class="comment">
+      <p class="info">
+        Comment {{ forloop.counter }} by {{ comment.name }}
+        {{ comment.created }}
+      </p>
+      {{ comment.body|linebreaks }}
+    </div>
+  {% empty %}
+    <p>There are no comments.</p>
+  {% endfor %}
+  {% include "blog/post/includes/comment_form.html" %}
+{% endblock %}
+```
+
+### 
 >
 ```
 
 ```
 
+### 
 >
 ```
 
 ```
 
+### 
 >
 ```
 
 ```
 
+### 
 >
 ```
 
 ```
 
+### 
 >
 ```
 
 ```
 
+### 
+>
+```
+
+```
+
+
+### 
+>
+```
+
+```
 
