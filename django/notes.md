@@ -21,3 +21,66 @@ Django template language ­– https://docs.djangoproject.com/en/4.1/ref/templat
 Built-in template tags and filters – https://docs.djangoproject.com/en/4.1/ref/templates/builtins/
 Static files for the code in this chapter – https://github.com/PacktPublishing/Django-4-by-Example/tree/master/Chapter01/mysite/blog/static
 ```
+
+### URL 
+```
+https://docs.djangoproject.com/en/4.1/ref/urlresolvers/.
+https://docs.djangoproject.com/en/4.1/topics/http/urls/#path-converters.
+```
+### pagination
+```
+https://docs.djangoproject.com/en/4.1/ref/paginator/.
+```
+
+### class based view
+```
+https://docs.djangoproject.com/en/4.1/topics/class-based-views/intro/.
+```
+
+### forms
+```
+https://docs.djangoproject.com/en/4.1/ref/forms/fields/.
+https://owasp.org/www-community/attacks/csrf.
+
+https://docs.djangoproject.com/en/4.1/topics/forms/.
+```
+
+### email
+```
+Instead of Gmail, you can also use a professional,
+such as SendGrid (https://sendgrid.com/) or
+
+Amazon Simple Email Service (https://aws.amazon.com/ses/)
+
+You can find installation instructions for django-sengrid at
+
+ https://github.com/sklarsa/django-sendgrid-v5, and installation instructions for django-ses at https://github.com/django-ses/django-ses.
+```
+
+### google email configuration
+```
+https://support.google.com/accounts/answer/185833.
+
+https://learning.oreilly.com/library/view/django-4-by/9781801813051/Text/Chapter_2.xhtml#_idParaDest-82
+https://docs.djangoproject.com/en/4.1/topics/email/.
+```
+
+###
+```
+```
+
+###
+```
+
+```
+
+###
+```
+
+```
+
+###
+```
+
+```
+
